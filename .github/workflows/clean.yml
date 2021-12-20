@@ -3,14 +3,15 @@ name: Clean GH-PAGES
 on: [workflow_dispatch]
 
 jobs:
-  CI:
-    runs-on: [self-hosted, linux]
+  clean:
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      # checkout specific branch
       - run: |
-          date > generated.txt
           git config user.name github-actions
           git config user.email github-actions@github.com
+          date > generated.txt
           git add .
           git commit -m "generated"
           git push
